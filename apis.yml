@@ -1,23 +1,73 @@
 aid: bindx
+
 name: Bindx
-description: 'Bindx is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+
+image: https://www.bindx.com/images/shares_web/fb.jpg?1782436650
+
+description: Bindx is an Argentine fintech company offering a modular, integrated financial ecosystem through APIs. It provides services such
+  as digital wallets, payments, lending, insurance, and identity verification, targeting businesses to embed banking and financial functionalities.
+  With a focus on scalability and automation, Bindx serves hundreds of companies and millions of users across Latin America, delivering secure
+  and compliant API solutions for banking, payments, crypto, and more.
+
 url: https://raw.githubusercontent.com/api-evangelist/bindx/refs/heads/main/apis.yml
+
 x-type: company
+
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
+
+x-tier: profiled
+x-tier-reason: enrichment pass 2026-09-28 (modular-v1; was harvest)
+
 specificationVersion: '0.20'
+
 created: '2026-09-28'
+
 modified: '2026-09-28'
+
 tags:
-- Company
-apis: []
+- Fintech
+- Banking
+- Payments
+- API
+- Argentina
+
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+
 common:
+- type: Hosts
+  url: hosts/bindx-hosts.yml
+- type: Vendors
+  url: vendors/bindx-vendors.yml
+- type: Documentation
+  url: https://developers.bindx.com/
+- type: DomainSecurity
+  url: security/bindx-domain-security.yml
 - type: Website
-  url: https://equityzen.com/company/bindx
+  url: https://www.bindx.com
+
+apis:
+- name: Bindx API
+  description: Bindx provides a suite of financial APIs including eCheqs, crypto trading, FX operations, and BCollect payments as listed in their
+    developer portal.
+  humanURL: https://developers.bindx.com/
+  baseURL: null
+  aid: bindx:bindx-api
+
+x-coverage:
+  state: gated
+  reason: partner-login
+  detail: Access to the developers.bindx.com API documentation returns HTTP 403 Access Denied, preventing contract discovery.
+  evidence:
+  - url: https://developers.bindx.com/openapi.json
+    status: 403
+  checked: '2026-09-28'
+x-enrichment:
+  date: '2026-09-28'
+  status: enriched
+  artifacts_added: 6
+  pass: modular-v1
+  engine: identity=local,contract=local,surfaces=local,docs=local,regulatory=local
